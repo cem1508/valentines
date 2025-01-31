@@ -1,10 +1,10 @@
 const phrases = [
-  "Nein?!?",
-  "Bist du dir sicher?",
-  "Sicher sicher?",
-  "Bitteeee",
-  "Tu mir das nicht an :(",
-  "Du brichst mir das Herz </3",
+  "no?!?",
+  "Are you sure?",
+  "sure sure?",
+  "pleaseeee",
+  "don't do thos to me :(",
+  "mah heart mah soul </3",
 ];
 
 let noCount = 0;
@@ -67,6 +67,9 @@ function startMovingButton(){
 
     const randomX = Math.random() * maxX;
     const randomY = Math.random() * maxY;
+
+    // sanfte Animation
+    noButton.style.transition = `left ${speed / 1000}s ease-in-out, top ${speed / 1000}s ease-in-out`;
 
     noButton.style.position = 'absolute';
     noButton.style.left = randomX + 'px';
