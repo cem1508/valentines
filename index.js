@@ -1,16 +1,17 @@
-function answer(response) {
-    document.getElementById("responseMessage").innerText =
-      "Du hast geantwortet: " + response;
-  
-    // Google Formular URL + korrekte Feld-ID
-    fetch(
-      "https://docs.google.com/forms/d/e/1FAIpQLSckJhPA7GEw4R0E6ZhKs46g7STafkQW87yJ3AMY9UHnxeczZg/formResponse",
-      {
-        method: "POST",
-        mode: "no-cors",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: `entry.1490941661=${encodeURIComponent(response)}`,
-      }
-    ).then(() => console.log("Antwort gesendet:", response));
-  }
-  
+function sendAnswer(response) {
+  const formUrl = "https://docs.google.com/forms/d/e/1FAIpQLSc9tiirRo24zYht6AkdelUlaptRoOI0sqZnHGUvUrXFt7Yf8g/formResponse";
+  const entryID = "entry.555147384"; // Ersetze mit der korrekten Feld-ID
+
+  // Formulardaten erstellen
+  const formData = new FormData();
+  formData.append(entryID, response);
+
+  // Daten an Google Form senden
+  fetch(formUrl, {
+      method: "POST",
+      mode: "no-cors",
+      body: formData
+  }).then(() => {
+      document.getElementById("responseMessage").innerText = "Antwort gesendet: " + response;
+  }).catch(error => console.error("Fehler beim Senden:", error));
+}
