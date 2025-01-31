@@ -3,14 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Will you be my valentine?</title>
-    <link rel="stylesheet" href="index.css">
+    <title>I have a question</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #ffebee;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            cursor: pointer;
+        }
+        h1 {
+            font-size: 3em;
+            color: #e91e63;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px;
+        }
+    </style>
 </head>
-<body>
-    <h1>Will you be my valentine?</h1>
-    <button onclick="sendAnswer('Ayo')">Ayo!</button>
-    <button id="noButton" onclick="handleNoClick()">Nein</button>
-    <p id="responseMessage"></p>
-    <script src="index.js"></script>
+<body onclick="redirectToMainPage()">
+    <div>
+       
+        <img src="https://i.giphy.com/SLlDHukPmnkv4aGLsS.webp" alt="Romantic GIF">
+        <h1>Click anywhere</h1>
+        </div>
+
+        <script>
+            function redirectToMainPage(){
+                window.location.href = "main.html";
+            }
+        </script>
 </body>
 </html>
