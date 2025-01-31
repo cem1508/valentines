@@ -11,11 +11,11 @@ let noCount = 0;
 let speed = 1000;
 let moveInterval;
 
-const noButton = document.getElementById('noButton');
-noButton.style.position = 'absolute';
+//const noButton = document.getElementById('noButton');
+//noButton.style.position = 'absolute';
 
 function handleNoClick(){
-  //const noButton = document.getElementById('noButton');
+  const noButton = document.getElementById('noButton');
   const responseMessage = document.getElementById('responseMessage');
 
   noButton.textContent = phrases[Math.min(noCount, phrases.length - 1)];
@@ -89,7 +89,7 @@ function startMovingButton(){
 function sendAnswer(response) {
   const formUrl = "https://docs.google.com/forms/d/e/1FAIpQLSc9tiirRo24zYht6AkdelUlaptRoOI0sqZnHGUvUrXFt7Yf8g/formResponse";
   const entryID = "entry.555147384"; // Ersetze mit der korrekten Feld-ID
- 
+
   // Formulardaten erstellen
   const formData = new FormData();
   formData.append(entryID, response);
@@ -101,20 +101,35 @@ function sendAnswer(response) {
       body: formData
   }).then(() => {
       document.getElementById("responseMessage").innerText = "";
-  }).catch(error => console.error("error", error));
+  }).catch(error => console.error("Fehler beim Senden:", error));
 
-   // Confetti-Animation auslösen, wenn "Ayo!" geklickt wird
-   if (response === 'Ayo') {
-    console.log("Confetti wird ausgelöst!");
+  // Confetti-Animation auslösen, wenn "Ayo!" geklickt wird
+  if (response === 'Ayo') {
     confetti({
-      particleCount: 100, // Anzahl der Konfetti-Partikel
-      spread: 70, // Streuung der Partikel
-      origin: { y: 0.6 } // Startposition der Partikel
+      particleCount: 500, // Viel mehr Partikel
+      spread: 120, // Größere Streuung
+      origin: { y: 0.6 },
+      colors: ['#ff3b30', '#007aff', '#34c759', '#ffcc00', '#5856d6', '#af52de', '#ff2d55'], // Mehr Farben
+      shapes: ['circle', 'square'], // Beide Formen
+      gravity: 0.4, // Langsamere Partikel
+      ticks: 300 // Längere Lebensdauer
     });
+
+    // Pause einbauen und letzte Seite anzeigen
+    setTimeout(() => {
+      // Hauptseite ausblenden
+      document.querySelector('.container').style.display = 'none';
+
+      // Letzte Seite einblenden
+      document.getElementById('finalPage').style.display = 'block';
+
+       // Karte einblenden
+       document.getElementById('mapContainer').style.display = 'block';
+    }, 3000); // 3 Sekunden Pause
   }
 
-  //  bewegung stoppen
-  if(response == 'Ayo' && moveInterval){
+  // Bewegung stoppen, wenn "Ayo!" geklickt wird
+  if (response === 'Ayo' && moveInterval) {
     clearInterval(moveInterval);
   }
 }
