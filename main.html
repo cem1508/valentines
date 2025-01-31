@@ -5,13 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>will you be my valentine?</title>
     <link rel="stylesheet" href="index.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 </head>
 <body>
     <div class="container">
-        <h1>will you be my valentine?</h1>
-        <div class="buttons">
-            <button class="primary" onclick="sendAnswer('Ayo')">ayo!</button>
-            <button id="noButton" class="secondary" onclick="handleNoClick()">no</button>
+        <div class="card">
+            <div class="letter">
+                <h1>will you be my valentine?</h1>
+            </div>
+            <div class="buttons">
+                <button class="primary" onclick="sendAnswer('Ayo')">ayo!</button>
+                <button id="noButton" class="secondary" onclick="handleNoClick()">no</button>
+            </div>
         </div>
         <p id="responseMessage"></p>
     </div>   

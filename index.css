@@ -13,49 +13,62 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
 }
 
 .card {
     background: white;
-    padding: 25px;
+    padding: 30px;
     border-radius: 20px; /* Größere abgerundete Ecken */
     box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1); /* Subtiler Schatten */
     text-align: center;
-    width: 320px; /* Etwas breiter */
+    width: 100%;
     animation: fadeIn 1.5s ease-in-out;
+}
+
+.letter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* Abstand zwischen den Elementen */
 }
 
 .letter h1 {
     color: #ff3b30; /* Apple-Rot */
-    font-size: 1.8rem; /* Größere Schrift */
-    margin-bottom: 10px;
+    font-size: 2.5rem; /* Größere Schrift */
+    margin: 0;
     font-weight: 600; /* Halbfett */
+    line-height: 1.2; /* Bessere Lesbarkeit */
 }
 
 .letter p {
     color: #1d1d1f; /* Dunkelgrau */
-    margin: 10px 0;
-    font-size: 1.1rem;
+    margin: 0;
+    font-size: 1.2rem;
+    line-height: 1.5; /* Bessere Lesbarkeit */
 }
 
 .buttons {
-    margin-top: 20px;
+    margin-top: 30px;
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Abstand zwischen den Buttons */
+    gap: 15px; /* Abstand zwischen den Buttons */
+    align-items: center; /* Buttons zentrieren */
 }
 
 button {
-    padding: 12px 20px;
-    margin: 5px;
+    padding: 15px 30px; /* Größere Buttons */
     border: none;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 1.1rem;
     border-radius: 12px; /* Abgerundete Ecken */
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
     width: 100%;
     max-width: 250px;
     margin: 0 auto; /* Zentrieren der Buttons */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtiler Schatten */
 }
 
 .yes-btn {
@@ -66,20 +79,24 @@ button {
 .yes-btn:hover {
     background-color: #ff1a1a; /* Dunkleres Rot beim Hover */
     transform: scale(1.05); /* Leichte Vergrößerung beim Hover */
+    box-shadow: 0px 6px 15px rgba(255, 59, 48, 0.3); /* Schatten beim Hover */
 }
 
+
 .no-btn {
-    background-color: #a6a6a6; /* Apple-Grau */
+    background-color: gray;
     color: white;
+    transition: left 0.8s ease-in-out, top 0.8s ease-in-out; /* Transition aktivieren */
 }
 
 .no-btn:hover {
     background-color: #8e8e93; /* Dunkleres Grau beim Hover */
     transform: scale(1.05); /* Leichte Vergrößerung beim Hover */
+    box-shadow: 0px 6px 15px rgba(166, 166, 166, 0.3); /* Schatten beim Hover */
 }
 
 #responseMessage {
-    margin-top: 15px;
+    margin-top: 20px;
     font-size: 1rem;
     color: #1d1d1f;
 }

@@ -1,9 +1,9 @@
 const phrases = [
   "no?!?",
-  "Are you sure?",
+  "are you sure?",
   "sure sure?",
   "pleaseeee",
-  "don't do thos to me :(",
+  "don't do this to me :(",
   "mah heart mah soul </3",
 ];
 
@@ -11,8 +11,11 @@ let noCount = 0;
 let speed = 1000;
 let moveInterval;
 
+const noButton = document.getElementById('noButton');
+noButton.style.position = 'absolute';
+
 function handleNoClick(){
-  const noButton = document.getElementById('noButton');
+  //const noButton = document.getElementById('noButton');
   const responseMessage = document.getElementById('responseMessage');
 
   noButton.textContent = phrases[Math.min(noCount, phrases.length - 1)];
@@ -41,6 +44,8 @@ function handleNoClick(){
 
   speed = Math.max(100, speed - 100); //mindest geschwindigkeit 100ms
 
+ 
+
   startMovingButton();
 
   if(noCount >= phrase.length){
@@ -51,6 +56,9 @@ function handleNoClick(){
 
 function startMovingButton(){
   const noButton = document.getElementById('noButton');
+
+   // sanfte Animation
+   noButton.style.transition = `left ${speed / 1000}s ease-in-out, top ${speed / 1000}s ease-in-out`;
 
   // vorheriges Intervall stoppen
   if(moveInterval){
@@ -68,8 +76,7 @@ function startMovingButton(){
     const randomX = Math.random() * maxX;
     const randomY = Math.random() * maxY;
 
-    // sanfte Animation
-    noButton.style.transition = `left ${speed / 1000}s ease-in-out, top ${speed / 1000}s ease-in-out`;
+    
 
     noButton.style.position = 'absolute';
     noButton.style.left = randomX + 'px';
@@ -96,6 +103,17 @@ function sendAnswer(response) {
       document.getElementById("responseMessage").innerText = "";
   }).catch(error => console.error("error", error));
 
+   // Confetti-Animation auslösen, wenn "Ayo!" geklickt wird
+   if (response === 'Ayo') {
+    console.log("Confetti wird ausgelöst!");
+    confetti({
+      particleCount: 100, // Anzahl der Konfetti-Partikel
+      spread: 70, // Streuung der Partikel
+      origin: { y: 0.6 } // Startposition der Partikel
+    });
+  }
+
+  //  bewegung stoppen
   if(response == 'Ayo' && moveInterval){
     clearInterval(moveInterval);
   }
