@@ -1,10 +1,10 @@
 const phrases = [
-  "no?!?",
-  "are you sure?",
-  "sure sure?",
-  "pleaseeee",
-  "don't do this to me :(",
-  "mah heart mah soul </3",
+  "versuchs nochmal",
+  "bist du dir sicher?",
+  "sicher sicher?",
+  "fang mich",
+  "tu mir das nicht an :(",
+  "im fast as fuck boiiii",
 ];
 
 let noCount = 0;
